@@ -5,13 +5,12 @@ PRO ace_1d_mainprogram, inputs, output
     ; Center for Space Science and Engineering Research, Virginia Tech
     ; Blacksburg, VA
 
-    ; The present model builds upon the 1D Nitric Oxide model
-    ; and extends it to include a solver for
-    ; Major Species densities
-    ; Other minor species
-    ; Ion densities, and
-    ; Neutral, ion and electron temperatures
-
+    ; The present model builds upon the 1D Nitric Oxide model written by the 
+    ; Bailey group and extends it to include solvers for:    
+    ; 1. Major Species densities
+    ; 2. Thermospheric minor species
+    ; 3. Ion densities, and
+    ; 4. Neutral, ion and electron temperatures
 
 	; Number of timesteps required for the run
 	nday_hours = 24
