@@ -8,7 +8,11 @@ model  = {  del_time : inputs.timestep      ,$ ; Time step, in seconds
             p0       : 5.e-4                ,$ ; Model reference pressure in dyne/cm^2, corresponding to the pressure at the grid point z = 0          
             zp       : findgen(57)/4 - 7.   ,$ ; The vertical grid has 4 grid points per scale height. 
             zbound   : 97e5                 ,$ ; The lower pressure boundary of the model is assumed to be at 97 km
-            dz       : 0.25                  $ ; dz = 0.25
+            dz       : 0.25                 ,$ ; dz = 0.25
+
+	         nday_hours      : 24, $
+	         nhour_minutes   : 60, $
+	         nminute_seconds : 60  $
          }            
 
 ; Physical constants
