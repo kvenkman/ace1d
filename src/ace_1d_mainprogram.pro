@@ -1,66 +1,61 @@
 PRO ace_1d_mainprogram, inputs, output
-    ; Authors
-    ; K Venkataramani
-    ; S M Bailey
-    ; Center for Space Science and Engineering Research, Virginia Tech
-    ; Blacksburg, VA
+   ; Authors
+   ; K Venkataramani
+   ; S M Bailey
+   ; Center for Space Science and Engineering Research, Virginia Tech
+   ; Blacksburg, VA
 
-    ; The present model builds upon the 1D Nitric Oxide model written by the 
-    ; Bailey group and extends it to include solvers for:    
-    ; 1. Major Species densities
-    ; 2. Thermospheric minor species
-    ; 3. Ion densities, and
-    ; 4. Neutral, ion and electron temperatures
-
-	; Number of timesteps required for the run
-	nday_hours = 24
-	nhour_minutes = 60
-	nminute_seconds = 60
-
-    nsteps = long(inputs.ndays*nday_hours*nhour_minutes/ $
-    	         (inputs.timestep/nminute_seconds) + 1)
-
-	; Number of saves in the output
-    n_saves = ((long(nsteps)) / inputs.save_res)+1
+   ; The present model builds upon the 1D Nitric Oxide model written by the 
+   ; Bailey group and extends it to include solvers for:    
+   ; 1. Major Species densities
+   ; 2. Thermospheric minor species
+   ; 3. Ion densities, and
+   ; 4. Neutral, ion and electron temperatures
 
 	; Initialize constants & variable structures
-    @ace_1d_model_parameters
-    @ace_1d_loadeuv
-    @ace_1d_defvariables
-    @ace_1d_chem_parameters
-    @ace_1d_initialconditions
+   @ace_1d_model_parameters
+   @ace_1d_loadeuv
+   @ace_1d_defvariables
+   @ace_1d_chem_parameters
+   @ace_1d_initialconditions
+   
+	; Number of timesteps required for the run
+   nsteps = long(inputs.ndays*model.nday_hours*model.nhour_minutes/ $
+                  (inputs.timestep/model.nminute_seconds) + 1)
 
-	;;;;;;
-	; These parameters do not currently affect model run
-    model_time.day = inputs.start_day
-    model_time.year = inputs.run_year
-    model_time.time = 43200.00 ; Run starts at noon
-    ;;;;;;
+	; Number of saves in the output
+   n_saves = ((long(nsteps)) / inputs.save_res) + 1
 
-	; Set solar activity levels
-	model_sun.f107d = inputs.f107d
-    model_sun.f107a = inputs.f107a
+   ;;;;;;
+   ; These parameters do not currently affect model run
+   model_time.day = inputs.start_day
+   model_time.year = inputs.run_year
+   model_time.time = 43200.00 ; Run starts at noon
+   ;;;;;;
 
-    ; Initialize solar spectrum
-    ace_1d_euvac, solspec, model_sun.f107d, model_sun.f107a, zpid, zcol, inputs
+   ; Set solar activity levels
+   model_sun.f107d = inputs.f107d
+   model_sun.f107a = inputs.f107a
 
-    ; Initialize model chemistry
-    ace_1d_updatechem, zmaj, zion, zminor, model, $
-                       spindex, exomatrix, coeffmatrix, ratematrix, $
-                       heatmatrix
+   ; Initialize solar spectrum
+   ace_1d_euvac, solspec, model_sun.f107d, model_sun.f107a, zpid, zcol, inputs
 
-    initial.zz=zmaj.zz
+   ; Initialize model chemistry
+   ace_1d_updatechem, zmaj, zion, zminor, model, spindex, exomatrix, $
+                        coeffmatrix, ratematrix, heatmatrix
+                    
 
-	; Initialize molecular diffusion and thermal conductivity coefficients 
-	; and heat capacity
-    ace_1d_km, zmaj, zminor, mass, model, pconst, k_m, flux
-    ace_1d_cpkt, zmaj, mass, pconst, model
+   initial.zz=zmaj.zz
 
-    ; Counter to monitor history saves
-    n_save=0l
+   ; Initialize molecular diffusion and thermal conductivity coefficients 
+   ; and heat capacity
+   ace_1d_km, zmaj, zminor, mass, model, pconst, k_m, flux
+   ace_1d_cpkt, zmaj, mass, pconst, model
 
-;	@ace_1d_initialconditions_loop
-    @ace_1d_initialconditions
+   ; Counter to monitor history saves
+   n_save=0l
+
+   @ace_1d_initialconditions
 
 
 	FOR i = 1., nsteps - 1 DO BEGIN
