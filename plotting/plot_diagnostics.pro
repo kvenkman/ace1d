@@ -1,33 +1,25 @@
-PRO plot_diagnostics_helper, model_output, f107=f107, create_ps=create_ps
-   
-   ; load SNOE color table
-   ; snoect, /bw
-   a_env
+PRO plot_diagnostics_helper, model_output, f107=f107, ps=ps
    
    ; Model pressure coordinates
    zp = findgen(57)/4 - 7.
    
    !p.multi = [0, 2, 2, 0]
-   if(keyword_set(create_ps)) then begin
+   if(keyword_set(ps)) then begin
       old_device = !d.name
       set_plot, 'ps'
-      charthick = charthick
+      charthick = 3
       ythick = 4
-      xthick = xthick
+      xthick = 4
       charsize = 1
       thick = 4
+      device, file = "plots/diagnostic_plot_"+strtrim(f107, 2)+"_"+strtrim((long64(systime(/julian)*1e5)), 2)+'.ps', /encapsulated, bits = 16, xsize = 7, ysize = 7, /inches, /color
       
    endif else begin      
       window, /free, xsize = 800*(12/7.), ysize = 800
-      charthick = 2
-      thick = 2
-      xthick = 2
-      ythick = 2
-      charsize=1.75
    endelse
    
    ; plot major species
-   plot, alog10(model_output.zmaj.n2den), zp, yr = [-7, 7], title = 'Major Species', $
+   plot, alog10(model_output.zmaj.n2den), zp, yr = [-7, 7], $
    background = 255, color = 0, charthick = charthick, xthick = xthick, $ 
    ythick = ythick, thick = thick, charsize = charsize, $
    xtitle = 'Log!D10!N (densities, cm!E-3!N)', ytitle = 'Z', /ys
@@ -39,11 +31,12 @@ PRO plot_diagnostics_helper, model_output, f107=f107, create_ps=create_ps
    xyouts, 12, 4, 'O!D2!N', color = 3, charsize = charsize, charthick = charthick
    xyouts, 12, 2.75, 'N!D2!N', color = 0, charsize = charsize, charthick = charthick
    
-   xyouts, 12, 7.5, 'F10.7:'+f107, charthick = charthick
+   xyouts, 0.12, .97, 'Major Species', charthick = charthick, charsize=charsize,/normal
+   xyouts, 0.36, .97, 'F10.7:'+f107, charthick = charthick, charsize=charsize,/normal
    
    ; plot minor species
    plot, alog10(model_output.zminor.n4s), zp, yr = [-7, 7], xr = [0, 11], $
-   title = 'Minor Species', background = 255, color = 0, charthick = charthick, $ 
+   background = 255, color = 0, charthick = charthick, $ 
    xthick = xthick, ythick = ythick, thick = thick, charsize = charsize, $
    xtitle = 'Log!D10!N (densities, cm!E-3!N)', ytitle = 'Z', /ys
    
@@ -62,7 +55,8 @@ PRO plot_diagnostics_helper, model_output, f107=f107, create_ps=create_ps
    xyouts, 9, 0.25, 'O(!E1!ND)', color = 6, charsize = charsize,charthick = charthick
    xyouts, 9, -1.25, 'N!D2!N(A)', color = 2, charsize = charsize,charthick = charthick
    
-   xyouts, 1950, 7.5, 'F10.7:'+f107, charthick = charthick, color = 255, charsize = 0.7
+   xyouts, 0.625, 0.97, 'Minor Species', charthick = charthick, charsize=charsize,/normal
+   xyouts, 0.85, 0.97, 'F10.7:'+f107, charthick = charthick, charsize = charsize,/normal
    
    ; plot temperatures
    plot, model_output.zmaj.tn, zp, xr = [100, 2200], background = 255, color = 0, $
@@ -74,6 +68,9 @@ PRO plot_diagnostics_helper, model_output, f107=f107, create_ps=create_ps
    xyouts, 350, 5.25, 'Te', color = 11, charsize = charsize, charthick = charthick
    xyouts, 350, 4, 'Ti', color = 3, charsize = charsize, charthick = charthick
    xyouts, 350, 2.75, 'Tn', color = 0, charsize = charsize, charthick = charthick
+   
+   xyouts, .12, .47, 'Temperatures', charthick = charthick, charsize=charsize, /normal
+   xyouts, 0.36, 0.47, 'F10.7:'+f107, charthick = charthick, charsize = charsize, /normal
 
    ; plot ionosphere
    plot, alog10(model_output.zion.e), zp, charthick = charthick, xthick = xthick, $
@@ -97,21 +94,24 @@ PRO plot_diagnostics_helper, model_output, f107=f107, create_ps=create_ps
    xyouts, 7, -1, 'e', charsize = charsize, charthick = charthick, color = 0
 
    plots, 6, -3.7, psym = 4, color = 3, thick = 4
-   xyouts, 6.2, -4, 'O!E+!N(!E2!ND)', color = 3, charthick = charthick
+   xyouts, 6.2, -4, 'O!E+!N(!E2!ND)', color = 3, charthick = charthick, charsize = charsize
 
    plots, 6, -4.95, psym = 7, color = 3, thick = 4
-   xyouts, 6.2, -5.25,  'O!E+!N(!E2!NP)', color = 3, charthick = charthick
+   xyouts, 6.2, -5.25,  'O!E+!N(!E2!NP)', color = 3, charthick = charthick, charsize = charsize
 
-   xyouts, 6.5, 7.5, 'F10.7:'+f107, charthick = thick
+   xyouts, 0.625, 0.47, 'Ions', charthick = charthick, charsize=charsize, /normal
+   xyouts, .85, 0.47, 'F10.7:'+f107, charsize = charsize, /normal
   
-   if(keyword_set(create_ps)) then begin
+   if(keyword_set(ps)) then begin
       device, /close
       set_plot, old_device
    endif
+   
+   !p.multi = 0
 
 END
 
-PRO plot_diagnostics, filename
+PRO plot_diagnostics, filename, ps = ps
    ; Given a ACE1D generated diagnostic save file, 
    ; plot model outputs
    
@@ -141,7 +141,8 @@ PRO plot_diagnostics, filename
    ; in turn contains the sub-structures ACE1D_100 and ACE1D_250, plot and 
    ; display model output fields
    
-   plot_diagnostics_helper, model_output.ace1d_100, f107 = '100'
-   ; plot_diagnostics_helper, model_output.ace1d_250, f107 = '250', /create_ps 
+   a_env   
+   plot_diagnostics_helper, model_output.ace1d_100, f107 = '100', ps=ps
+   plot_diagnostics_helper, model_output.ace1d_250, f107 = '250', ps=ps
    
 END
