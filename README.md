@@ -10,3 +10,16 @@ This is a 1D coupled model of the Earth's thermosphere and ionosphere, and build
 The model is written in IDL, and is called by running the 'run_ace1d.pro' procedure from the terminal. This file also contains inputs that can be changed (presently, F107 indices and output filename).
 
 ![ACE1D Modeled thermospheric/ionospheric heating terms](heating_terms.png)
+
+### Generating plots
+I've tried to provide the code needed to reproduce the plots shown here. These codes can be found under the 'plotting' folder. To get the color tables, line weights, and character weights *exactly* right, run the `env_setup` code prior to running other codes. I.e., -
+
+```
+IDL> env_setup
+% Compiled module: ENV_SETUP.
+IDL> plot_diagnostics, '/home/karthik/Desktop/workspace/ace_1d_idl/git_folder/src/solar_min_max_run.sav', /ps
+```
+should generate the below plots : 
+
+![Diagnostic plot, F10.7=100](diagnostic_plot_100_245914617586.jpg)
+![Diagnostic plot, F10.7=250](diagnostic_plot_250_245914617586.jpg)
