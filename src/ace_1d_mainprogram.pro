@@ -1,4 +1,4 @@
-PRO ace_1d_mainprogram, inputs, output
+PRO ace_1d_mainprogram, inputs, output, debug=debug
    ; Authors
    ; K Venkataramani
    ; S M Bailey
@@ -166,21 +166,53 @@ PRO ace_1d_mainprogram, inputs, output
 	; END OF MAIN LOOP
 	ENDFOR
 
-    ; This is the final output of the model
-	output={zmaj        : zmaj       , $
-			zminor      : zminor     , $
-			zion        : zion       , $
-			coeffmatrix : coeffmatrix, $
-			coolterms   : coolterms  , $
-			cooltermse  : cooltermse , $
-			cooltermsi  : cooltermsi , $
-		    heatterms   : heatterms  , $
-		    heattermse  : heattermse , $
-		    heatmatrix  : heatmatrix , $
-		    zpid        : zpid       , $
-		    zei         : zei        , $
-		    zcol        : zcol       , $
-		    spindex     : spindex    , $
-		    yieldmatrix : yieldmatrix  $
-		    }
+   ; This is the final output of the model
+   if keyword_set(debug) then begin
+      output={$
+         zmaj        : zmaj       , $
+         zminor      : zminor     , $
+         zion        : zion       , $
+         coeffmatrix : coeffmatrix, $
+         coolterms   : coolterms  , $
+         cooltermse  : cooltermse , $
+         cooltermsi  : cooltermsi , $
+         heatterms   : heatterms  , $
+         heattermse  : heattermse , $
+         heatmatrix  : heatmatrix , $
+         zpid        : zpid       , $
+         zei         : zei        , $
+         zcol        : zcol       , $
+         spindex     : spindex    , $
+         yieldmatrix : yieldmatrix, $
+         
+         ; Historical terms for debugging
+         azmajor     : azmajor    , $
+         azminor     : azminor    , $
+         azion       : azion      , $
+         acoolterms  : acoolterms , $
+         aheatterms  : aheatterms , $
+         aflux       : aflux      , $
+         azei        : azei       , $
+         azpid       : azpid        $
+      }
+   endif else begin
+      ; This is the final output of the model
+      output={$ 
+         zmaj        : zmaj       , $
+         zminor      : zminor     , $
+         zion        : zion       , $
+         coeffmatrix : coeffmatrix, $
+         coolterms   : coolterms  , $
+         cooltermse  : cooltermse , $
+         cooltermsi  : cooltermsi , $
+         heatterms   : heatterms  , $
+         heattermse  : heattermse , $
+         heatmatrix  : heatmatrix , $
+         zpid        : zpid       , $
+         zei         : zei        , $
+         zcol        : zcol       , $
+         spindex     : spindex    , $
+         yieldmatrix : yieldmatrix  $
+      }
+   endelse
 END
