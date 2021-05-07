@@ -17,7 +17,7 @@ I've tried to provide the code needed to reproduce the plots shown here. These c
 ```
 IDL> env_setup
 % Compiled module: ENV_SETUP.
-IDL> plot_diagnostics, '/home/karthik/Desktop/workspace/ace_1d_idl/git_folder/src/solar_min_max_run.sav', /ps
+IDL> plot_diagnostics, '../src/solar_min_max_run.sav', /ps
 ```
 should generate the below plots : 
 
