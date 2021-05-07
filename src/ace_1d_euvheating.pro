@@ -49,7 +49,7 @@ PRO ace_1d_euvheating, zmajnow, zcol, xsec, branching, solspec, heatterms, pcons
     src_heating = fltarr(model.nlev)
     
     do2 = 5.15 ; dissociation energy of O2
-    e630 = pconst.h*pconst.c/(630e-7*pconst.erg) ; Energy of 630 nm photon (relaxtion of O(1D) to ground)
+    e630 = pconst.h*pconst.c/(630e-7*pconst.ev2erg) ; Energy of 630 nm photon (relaxtion of O(1D) to ground)
 
     FOR i = 0, solspec.n_wave-1 DO BEGIN ; Loop over wavelength, but really concerned with between 1750 - 1050 A
         if solspec.wave1[i] ge 1200. then begin

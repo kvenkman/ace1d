@@ -15,7 +15,7 @@ model  = {  del_time : inputs.timestep      ,$ ; Time step, in seconds
 	         nminute_seconds : 60  $
          }            
 
-; Physical constants
+; Physical constants and conversion factors
 pconst = {  boltz : 1.38066e-16,$       ; boltzmann constant  in ergs K^-1        
             h     : 6.626e-27  ,$       ; in ergs s
             c     : 2.9979e10  ,$       ; in cm s^-1
@@ -23,10 +23,10 @@ pconst = {  boltz : 1.38066e-16,$       ; boltzmann constant  in ergs K^-1
             gask  : 8.314e7    ,$       ; gas constant                
             grav  : fltarr(model.nlev),$  ; acceleration due to gravity varies as a function of height, in cm s^-2
             gravref: 980.      ,$       ; Reference value of gravity
-            re    : 6371.e5    ,$
-            cgm   : 0.5        ,$
+            re    : 6371.e5    ,$       ; Earth radius in cm
+            cgm   : 0.5        ,$       
             eff   : 0.33       ,$       ; Solar EUV heating efficiency, from TIE-GCM
-            erg   : 1.602E-12  ,$		; Joule to ergs
+            ev2erg: 1.602E-12  ,$		; eV to ergs
             amu   : 1.6605e-24 ,$
             q_e   : 1.602e-19  ,$       ; Electron charge
             m_e   : 9.109e-28   $		; Electron mass

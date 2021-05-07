@@ -10,7 +10,7 @@ pro ace_1d_eionheating, zmajnow, zminornow, zionnow, $
 ; note that heating is due to photoelectrons and so the heating rate is done in ace_1d_solarphotonproc.pro
 ; note that as described in Smithro and Solomon 2008, the PE heating of ambient electrons is best described in two 
 ; terms due to solar euv above and below 55 nm.
-heattermse.q_quench = (reform(heatmatrix[spindex.n2d, spindex.e, *]))*pconst.erg
+heattermse.q_quench = (reform(heatmatrix[spindex.n2d, spindex.e, *]))*pconst.ev2erg
 heattermse.q_total  = heattermse.q_pe0_55 + heattermse.q_pe55_105 + heattermse.q_quench
 
 ; cooling terms are taken from the Schunk and Nagy text (second edition page 2009); see pages 277-287
@@ -170,24 +170,24 @@ t1 = 6.6e-14*zmajnow.n2den + 5.8e-14*zmajnow.o2den + 0.21e-14*zmajnow.oden*sqrt(
 t2 = 5.45e-14*zmajnow.o2den + 5.9e-14*zmajnow.n2den + 4.5e-14*zmajnow.oden
 t3 = 5.8e-14*zmajnow.n2den + 4.4e-14*zmajnow.oden + 0.14e-14*zmajnow.o2den*sqrt(zionnow.ti + zmajnow.tn)
 
-cool_in = (zionnow.o_p*t1 + zionnow.no_p*t2 + zionnow.o2_p*t3)*pconst.erg
+cool_in = (zionnow.o_p*t1 + zionnow.no_p*t2 + zionnow.o2_p*t3)*pconst.ev2erg
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; change units and sum up the cooling terms
-cooltermse.n2rot  = cooltermse.n2rot  * pconst.erg
-cooltermse.o2rot  = cooltermse.o2rot  * pconst.erg
-cooltermse.co2rot = cooltermse.co2rot * pconst.erg
-cooltermse.h2orot = cooltermse.h2orot * pconst.erg
+cooltermse.n2rot  = cooltermse.n2rot  * pconst.ev2erg
+cooltermse.o2rot  = cooltermse.o2rot  * pconst.ev2erg
+cooltermse.co2rot = cooltermse.co2rot * pconst.ev2erg
+cooltermse.h2orot = cooltermse.h2orot * pconst.ev2erg
 
-cooltermse.n2vib  = cooltermse.n2vib  * pconst.erg
-cooltermse.o2vib  = cooltermse.o2vib  * pconst.erg
-cooltermse.ofine  = cooltermse.ofine  * pconst.erg
-cooltermse.o1d    = cooltermse.o1d    * pconst.erg
+cooltermse.n2vib  = cooltermse.n2vib  * pconst.ev2erg
+cooltermse.o2vib  = cooltermse.o2vib  * pconst.ev2erg
+cooltermse.ofine  = cooltermse.ofine  * pconst.ev2erg
+cooltermse.o1d    = cooltermse.o1d    * pconst.ev2erg
 
-cooltermse.elasticn2 = cooltermse.elasticn2 * pconst.erg
-cooltermse.elastico2 = cooltermse.elastico2 * pconst.erg
-cooltermse.elastico  = cooltermse.elastico  * pconst.erg
-cooltermse.ei        = cooltermse.ei        * pconst.erg
+cooltermse.elasticn2 = cooltermse.elasticn2 * pconst.ev2erg
+cooltermse.elastico2 = cooltermse.elastico2 * pconst.ev2erg
+cooltermse.elastico  = cooltermse.elastico  * pconst.ev2erg
+cooltermse.ei        = cooltermse.ei        * pconst.ev2erg
 
 ; These don't have any temperature difference terms attached
 cooltermse.explicit = cooltermse.n2vib + cooltermse.o2vib + cooltermse.ofine + cooltermse.o1d

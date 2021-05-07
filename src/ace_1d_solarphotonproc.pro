@@ -133,8 +133,8 @@ eps0_55  =exp(eps0_55)
 eps55_105=exp(eps55_105)
 
 ; heating rate
-heattermse.q_pe0_55   = eps0_55*ionzr0_55 * pconst.erg
-heattermse.q_pe55_105 = eps55_105*ionzr55_105 * pconst.erg
+heattermse.q_pe0_55   = eps0_55*ionzr0_55 * pconst.ev2erg
+heattermse.q_pe55_105 = eps55_105*ionzr55_105 * pconst.ev2erg
 ;if count EQ 4998 then STOP
 ; Chemical production due to photon processes:
 
