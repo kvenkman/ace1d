@@ -227,54 +227,6 @@ o_o2_terms = {$
             s20 : fltarr(model.nlev)  $
             }
             
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;Diagnostic structures;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-             
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;            
-;;;;;Output Variable structures;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;output_maj = {      o      : fltarr(model.nlev,n_saves )   ,$
-;                    o2     : fltarr(model.nlev,n_saves )   ,$
-;                    n2     : fltarr(model.nlev,n_saves )   ,$
-;                    tn     : fltarr(model.nlev,n_saves )   ,$           
-;                    z      : fltarr(model.nlev,n_saves )   ,$
-;                    cp     : fltarr(model.nlev,n_saves )    $
-;             }
-
-;output_minor = {    no     : fltarr(model.nlev,n_saves )  ,$
-;                    co2    : fltarr(model.nlev,n_saves )  ,$
-;                    n4s   : fltarr(model.nlev,n_saves )  ,$
-;                    n2d   : fltarr(model.nlev,n_saves )  ,$
-;                    oh     : fltarr(model.nlev,n_saves )  ,$
-;                    n2p   : fltarr(model.nlev,n_saves )  ,$
-;                    o1d    : fltarr(model.nlev,n_saves )  ,$
-;                    o3p    : fltarr(model.nlev,n_saves )  ,$
-;                    o3     : fltarr(model.nlev,n_saves )  ,$
-;                    no2    : fltarr(model.nlev,n_saves )  ,$
-;                    h2o    : fltarr(model.nlev,n_saves )  ,$
-;                    h      : fltarr(model.nlev,n_saves )  ,$
-;                    ho2    : fltarr(model.nlev,n_saves )  ,$
-;                    ox     : fltarr(model.nlev,n_saves )  ,$
-;                    nox    : fltarr(model.nlev,n_saves )  ,$
-;                    hox    : fltarr(model.nlev,n_saves )  ,$
-;                    noxno  : fltarr(model.nlev,n_saves )  ,$
-;                    no3    : fltarr(model.nlev,n_saves )   } ; array of minor species
- 
-;output_ion = {      o_p    : fltarr(model.nlev,n_saves )  ,$
-;                    o2d_p  : fltarr(model.nlev,n_saves )  ,$
-;                    n_p    : fltarr(model.nlev,n_saves )  ,$
-;                    n2_p   : fltarr(model.nlev,n_saves )  ,$
-;                    o2_p   : fltarr(model.nlev,n_saves )  ,$
-;                    no_p   : fltarr(model.nlev,n_saves )  ,$
-;                    elec   : fltarr(model.nlev,n_saves )   } ; array of ions
-                    
-
-
-             
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Chemistry related structures;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
