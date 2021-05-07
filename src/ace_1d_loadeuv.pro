@@ -1,5 +1,8 @@
-; Initializes wavelength bins and cross sections associated with major and minor species
-; From solheat.F of glbmean 1D model
+; This code section defines quantities needed to run and use the EUVAC solar spectrum model
+; This includes: 
+; 1. EUVAC parameters (wavelength bins, reference spectrum, a-factors)
+; 2. Absorption cross sections for various species
+; 3. Branching ratios and scaling factors for various processes (dissociation, ionization, photoelectron dissociation/ionization etc.)
 ; Values primarily obtained from the NCAR TIE-GCM
 
 n_wave = 37. ; number of wavelength bins
@@ -90,7 +93,7 @@ solspec.afac = [5.937e-04, 6.089e-04, 1.043e-03, 1.125e-03,$
 ;
 ; Total absorption cross sections (10^-18 cm^2):
 ; 
-; O absorption coefficient:
+; O absorption cross sections:
 ;
 
 xsec.abs(0,*) = [$
@@ -103,7 +106,7 @@ xsec.abs(0,*) = [$
                3.78e+00, 1.32e+00, 3.25e-01, 1.05e-01, 1.13e-01,$
                1.70e-02, 2.27e-03]
 ;
-; O2 absorption coefficient:
+; O2 absorption cross sections:
 ;
 xsec.abs(1,*) = [$
                5.00e-01, 1.50e+00, 3.40e+00, 6.00e+00, 1.00e+01,$
@@ -115,7 +118,7 @@ xsec.abs(1,*) = [$
                7.63e+00, 2.63e+00, 6.46e-01, 2.10e-01, 2.25e-01,$
                3.40e-02, 4.54e-03]
 ;
-; N2 absorption coefficient:
+; N2 absorption cross sections:
 ;
 xsec.abs(2,*) = [$
                0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00,$
