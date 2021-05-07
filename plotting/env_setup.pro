@@ -1,4 +1,4 @@
-pro env_setup
+PRO env_setup
    ;;; DISPLAY
    device, decomposed = 0, retain = 2
 
@@ -34,24 +34,7 @@ pro env_setup
    !x.thick=3
    !y.thick=3
    
-   ; Load custom color table
-   ; First 11 colors run through the spectrum, the rest are all grey
-   ; 0 = black
-   ; 1 = violet
-   ; 2 = purple
-   ; 3 = navy
-   ; 4 = blue
-   ; 5 = aqua
-   ; 6 = green
-   ; 7 = lime
-   ; 8 = yellow
-   ; 9 = amber
-   ; 10 = orange
-   ; 11 red
-   ; 12 onward are all grey scale (dark to light)
-   ; 255 white
-
    restore, "c11.tbl"
-   tvlct,c1,c2,c3
+   tvlct, c1, c2, c3
    
-end
+END
