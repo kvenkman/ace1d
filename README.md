@@ -1,6 +1,6 @@
 The Atmospheric Chemistry and Energetics (ACE) 1D model, implemented in IDL
 
-Authors: Karthik Venkataramani, Scott M Bailey, Virginia Tech
+Authors: Karthik Venkataramani, Scott M Bailey, Justin Yonker Virginia Tech
 
 Contact: Karthik Venkataramani (karthikvt at vt dot edu) w/ subject line : ACE1D
 
