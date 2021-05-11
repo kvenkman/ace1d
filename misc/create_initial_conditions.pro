@@ -37,7 +37,7 @@ PRO create_initial_conditions
     alt_id = ncdf_dimdef(fid, 'alt', n_elements(altbin))
     
     a_id  = ncdf_vardef(fid, 'alts', [alt_id])
-    tn_id = ncdf_vardef(fid, 't_global_average', [alt_id])
+    tn_id = ncdf_vardef(fid, 'tn_global_average', [alt_id])
     o1_id = ncdf_vardef(fid, 'o1_global_average', [alt_id])
     o2_id = ncdf_vardef(fid, 'o2_global_average', [alt_id])
     n2_id = ncdf_vardef(fid, 'n2_global_average', [alt_id])

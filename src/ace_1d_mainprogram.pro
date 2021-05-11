@@ -2,6 +2,7 @@ PRO ace_1d_mainprogram, inputs, output, debug=debug
    ; Authors
    ; K Venkataramani
    ; S M Bailey
+   ; Justin Yonker
    ; Center for Space Science and Engineering Research, Virginia Tech
    ; Blacksburg, VA
 
@@ -12,7 +13,7 @@ PRO ace_1d_mainprogram, inputs, output, debug=debug
    ; 3. Ion densities, and
    ; 4. Neutral, ion and electron temperatures
 
-	; Initialize constants & variable structures
+   ; Initialize constants & variable structures
    @ace_1d_model_parameters
    @ace_1d_loadeuv
    @ace_1d_defvariables
@@ -44,7 +45,6 @@ PRO ace_1d_mainprogram, inputs, output, debug=debug
    ace_1d_updatechem, zmaj, zion, zminor, model, spindex, exomatrix, $
                         coeffmatrix, ratematrix, heatmatrix
                     
-
    initial.zz=zmaj.zz
 
    ; Initialize molecular diffusion and thermal conductivity coefficients 

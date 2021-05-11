@@ -1,5 +1,6 @@
-; Initial conditions are obtained from an global average atmospheric profile 
-; for medium solar activity, at equinox
+; Initial conditions for the background neutral atmosphere are obtained from a 
+; global average atmospheric profile using MSIS
+
 ; The lower boundary O/O2 mixing ratios and TN are initially obtained from MSIS
 	restore, 'eqnx_smed.sav'
 	restore, 'o_o2_lbc.sav'

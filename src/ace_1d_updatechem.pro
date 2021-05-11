@@ -2,13 +2,13 @@ PRO ace_1d_updatechem, zmaj, zion, zminor, model,  $
                        spindex, exomatrix, coeffmatrix, ratematrix, $
                        heatmatrix
                        
-;REACTION COEFFICIENTS procedure, taken from 1D NO model as of March, 2016
+; REACTION COEFFICIENTS procedure, taken from 1D NO model as of March, 2016
 ; Scott, Karthik, and Justin Y
 
 ; Conventions for adding reactions
 ; ------------------------------------------
 ; Each reaction block begins writing out the reaction
-; Then, reference the paper from which the rate coefficient is obtained
+; Then, reference the source from which the rate coefficient is obtained
 ; Any other comments are added after this
 ; Define the rate coefficient in the variable "coeff"
 ; Pass the reactant and product indices to ace_1d_updatecrh
@@ -333,7 +333,7 @@ ratematrix[spindex.o, spindex.o, *] = coeff*zmaj.oden*zmaj.oden*(zmaj.n2den+zmaj
 heatmatrix[spindex.o,spindex.o, *] = exomatrix[spindex.o,spindex.o]*ratematrix[spindex.o, spindex.o, *]
 
 
-; This reaction isn't important for the current version o
+; This reaction isn't important for the current version of the model
 ; O + O2 + M -> O3 + M
 ; Herron, with t-dep
 ; coeff = 6.0e-34 * (zmaj.tn/300.)^(-2.4)
