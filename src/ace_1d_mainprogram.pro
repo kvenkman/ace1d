@@ -18,6 +18,8 @@ PRO ace_1d_mainprogram, inputs, output, debug=debug
    @ace_1d_defvariables
    @ace_1d_loadeuv
    @ace_1d_chem_parameters
+   
+   ; Initialize model initial conditions
    @ace_1d_initialconditions
    STOP
    
