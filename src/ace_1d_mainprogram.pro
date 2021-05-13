@@ -15,10 +15,11 @@ PRO ace_1d_mainprogram, inputs, output, debug=debug
 
    ; Initialize constants & variable structures
    @ace_1d_model_parameters
-   @ace_1d_loadeuv
    @ace_1d_defvariables
+   @ace_1d_loadeuv
    @ace_1d_chem_parameters
    @ace_1d_initialconditions
+   STOP
    
 	; Number of timesteps required for the run
    nsteps = long(inputs.ndays*model.nday_hours*model.nhour_minutes/ $
