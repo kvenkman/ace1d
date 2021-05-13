@@ -51,6 +51,51 @@ mass =  {   o2    : 32. , $
             hox   : 1.  , $
             h     : 1.    $
         }
+        
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Solar spectra variables ;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+n_wave = 37. ; number of wavelength bins
+
+solspec = {$
+            n_wave     : n_wave        				,$
+            zflux      : fltarr(n_wave,model.nlev)  ,$
+            current    : fltarr(n_wave)				,$ 
+            reference  : fltarr(n_wave)				,$
+            wave1      : fltarr(n_wave)				,$
+            wave2      : fltarr(n_wave)				,$
+            afac       : fltarr(n_wave)				,$
+            BPhotonI   : fltarr(3, n_wave)			,$
+            BElectronI : fltarr(3, n_wave)			 $
+          }
+xsec = {$
+            abs        : fltarr(9, n_wave)		,$
+            br_pi      : fltarr(3,n_wave) 		,$
+            sigin4s    : fltarr(n_wave)   		,$
+            pepiscale  : fltarr(3,n_wave) 		,$
+            pepiscale_pedio2 : fltarr(n_wave)   ,$
+            pepiscale_pedin2 : fltarr(n_wave)   ,$
+            pepiscale_pedo2  : fltarr(n_wave)   ,$
+            pepiscale_pedn2  : fltarr(n_wave)    $               
+            }
+            
+branching = {$
+            pio_op_2p : fltarr(n_wave)	,$
+            pio_op_4s : fltarr(n_wave)	,$
+            pio_op_2d : fltarr(n_wave)	,$            
+            pdo2      : fltarr(n_wave)	,$
+            pdo2_o1dyield:fltarr(n_wave),$
+            pdn2      : fltarr(n_wave)	,$
+            pdio2     : fltarr(n_wave)	,$
+            pdin2     : fltarr(n_wave)	,$
+            peio_op2p : fltarr(n_wave)	,$
+            peio_op2d : fltarr(n_wave)	,$
+            peio_op4s : fltarr(n_wave)	 $
+            }
+                    
+
+        
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Chemical species present in the model;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         

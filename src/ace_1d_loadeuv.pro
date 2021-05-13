@@ -5,46 +5,7 @@
 ; 3. Branching ratios and scaling factors for various processes (dissociation, ionization, photoelectron dissociation/ionization etc.)
 ; Values primarily obtained from the NCAR TIE-GCM
 
-n_wave = 37. ; number of wavelength bins
-
-solspec = {$
-            n_wave     : n_wave        				,$
-            zflux      : fltarr(n_wave,model.nlev)  ,$
-            current    : fltarr(n_wave)				,$ 
-            reference  : fltarr(n_wave)				,$
-            wave1      : fltarr(n_wave)				,$
-            wave2      : fltarr(n_wave)				,$
-            afac       : fltarr(n_wave)				,$
-            BPhotonI   : fltarr(3, n_wave)			,$
-            BElectronI : fltarr(3, n_wave)			 $
-          }
-xsec = {$
-            abs        : fltarr(9, n_wave)		,$
-            br_pi      : fltarr(3,n_wave) 		,$
-            sigin4s    : fltarr(n_wave)   		,$
-            pepiscale  : fltarr(3,n_wave) 		,$
-            pepiscale_pedio2 : fltarr(n_wave)   ,$
-            pepiscale_pedin2 : fltarr(n_wave)   ,$
-            pepiscale_pedo2  : fltarr(n_wave)   ,$
-            pepiscale_pedn2  : fltarr(n_wave)    $               
-            }
-            
-branching = {$
-            pio_op_2p : fltarr(n_wave)	,$
-            pio_op_4s : fltarr(n_wave)	,$
-            pio_op_2d : fltarr(n_wave)	,$            
-            pdo2      : fltarr(n_wave)	,$
-            pdo2_o1dyield:fltarr(n_wave),$
-            pdn2      : fltarr(n_wave)	,$
-            pdio2     : fltarr(n_wave)	,$
-            pdin2     : fltarr(n_wave)	,$
-            peio_op2p : fltarr(n_wave)	,$
-            peio_op2d : fltarr(n_wave)	,$
-            peio_op4s : fltarr(n_wave)	 $
-            }
-                    
 ; Wavelength bins in angstroms
-
 solspec.wave1 = [1700.00, 1650.00, 1600.00, 1550.00, 1500.00,$
                  1450.00, 1400.00, 1350.00, 1300.00, 1250.00,$
                  1200.00, 1215.67, 1150.00, 1100.00, 1050.00,$
