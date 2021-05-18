@@ -1,9 +1,15 @@
 # Model input parameters
 # Comments begin with a #
 
-INIT_RUN= # set true if model run should start from MSIS profile
-INIT_PROFILE= # path to initial MSIS profile
-START_FILE= # if init_run is false, provide ACE1D generated IDL SAV file as starting file
+# set true if model run should start from MSIS profile
+INIT_RUN= 
+
+# path to initial MSIS profile
+INIT_PROFILE= 
+
+# if init_run is false, provide ACE1D generated IDL SAV file as starting file
+START_FILE= 
+
 F107D= # Daily F10.7 index, used to calculate solar flux
 F107A= # 81 day average of F10.7 index, used to calculate solar flux
 
@@ -11,7 +17,6 @@ F107A= # 81 day average of F10.7 index, used to calculate solar flux
 # As such, the mask can be used to study the impact of the solar flux at specific
 # wavelengths on the Earth's atmosphere
 # The ACE1D model uses the 37 wavelength bins following the work of ... 
-
 # A MASK__ value of zero will set the solar flux in that bin to zero. 
 
 MASK01=1 # 1700 - 1750 A
