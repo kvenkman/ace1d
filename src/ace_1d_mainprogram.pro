@@ -20,7 +20,7 @@ PRO ace_1d_mainprogram, inputs, output, debug=debug
    @ace_1d_chem_parameters
    
    ; Initialize model initial conditions
-   @ace_1d_initialconditions
+   @ace_1d_initialconditions2
    STOP
    
 	; Number of timesteps required for the run

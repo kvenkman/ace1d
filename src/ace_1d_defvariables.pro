@@ -30,8 +30,9 @@ zminor = {  no      : fltarr(model.nlev)   ,$  ; NO with diffusion
             n2d     : fltarr(model.nlev)   ,$ ;N(2D)
             n2p     : fltarr(model.nlev)   ,$ ;N(2P)
             n2a     : fltarr(8, model.nlev),$ ;N2(A) for v = 0-7
-            oh      : fltarr(model.nlev)   ,$
             o1d     : fltarr(model.nlev)   ,$
+            ; These species aren't currently used in the model
+            oh      : fltarr(model.nlev)   ,$
             o3      : fltarr(model.nlev)   ,$
             no2     : fltarr(model.nlev)   ,$
             h2o     : fltarr(model.nlev)   ,$
@@ -67,7 +68,7 @@ model_sun = { f107d : 0.0 ,$ ; Daily F10.7cm flux
               f107a : 0.0 ,$ ; 81-day average F10.7cm flux
               kp    : fltarr(8) ,$ 
               ap    : 0.0,$ 
-              sza   : 0.0,$ ; Solar Zenith angle
+              sza   : 60.0,$ ; Solar Zenith angle
               ecc   : 1.0 $ ; eccentricity factor due to orbit
             }
 

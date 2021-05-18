@@ -1,10 +1,6 @@
 PRO ace_1d_solarphotonproc, zmaj, model, pconst, solspec, zcol, zpid, zei, zion, heattermse, edep, branching, xsec, model_sun, count
+; Calculate absorption of solar radiation by the Earth's upper atmosphere
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-;
-
-;
 ;OUTPUT:	I_O-	Ionization freq for atomic oxygen.
 ;			I_O2-	Ionization freq for molecular oxygen
 ;			I_N2-	Ionization freq for molecular nitrogen
@@ -19,11 +15,14 @@ PRO ace_1d_solarphotonproc, zmaj, model, pconst, solspec, zcol, zpid, zei, zion,
 ;			PEI_O	Photoelectron impact ionization of O
 ;     PED_N2  Photeelectron impact excitation efficiency
 ;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  
-;@ace_chem1d_common_blocks.pro
+; Optical depths are stored as a m*n matrix, where
+; m is the number of major species that primarily absorb the solar radiation
+; n is the number of wavelength bins used to specify the solar spectrum 
+
+; 
  
-;****************** CALC OPTICAL DEPTH MATRICIES   ************************
+;****************** Calculate Optical Depth Matrices ************************
 tau_o  =  reform(xsec.abs[0,*])#zcol.so 
 tau_o2 =  reform(xsec.abs[1,*])#zcol.so2
 tau_n2 =  reform(xsec.abs[2,*])#zcol.sn2
@@ -135,7 +134,7 @@ eps55_105=exp(eps55_105)
 ; heating rate
 heattermse.q_pe0_55   = eps0_55*ionzr0_55 * pconst.ev2erg
 heattermse.q_pe55_105 = eps55_105*ionzr55_105 * pconst.ev2erg
-;if count EQ 4998 then STOP
+
 ; Chemical production due to photon processes:
 
 ;O(1D) from dissociation of O2
