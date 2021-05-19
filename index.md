@@ -1,4 +1,6 @@
-## Welcome to GitHub Pages
+## Building a 1D model of the Thermosphere-Ionosphere system
+
+Marcel Nicolet in [his 1963 paper](http://adsabs.harvard.edu/pdf/1963SCoA....6..175N) describes the upper atmosphere as the 'heterosphere' - the region of the atmosphere where the mean molecular mass cannot be considered to be constant.
 
 You can use the [editor on GitHub](https://github.com/kvenkman/ace1d/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
