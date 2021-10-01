@@ -2,7 +2,7 @@ PRO ace_1d_mainprogram, inputs, output, debug=debug
    ; Authors
    ; K Venkataramani
    ; S M Bailey
-   ; Justin Yonker
+   ; J Yonker
    ; Center for Space Science and Engineering Research, Virginia Tech
    ; Blacksburg, VA
 
@@ -20,12 +20,14 @@ PRO ace_1d_mainprogram, inputs, output, debug=debug
    @ace_1d_chem_parameters
    @ace_1d_initialconditions
    
-	; Number of timesteps required for the run
-   nsteps = long(inputs.ndays*model.nday_hours*model.nhour_minutes/ $
-                  (inputs.timestep/model.nminute_seconds) + 1)
+   ; Number of timesteps required for the run
+   nsteps = long(inputs.ndays)*model.nday_hours*model.nhour_minutes*model.nminute_seconds/inputs.timestep + 1
 
-	; Number of saves in the output
-   n_saves = ((long(nsteps)) / inputs.save_res) + 1
+   ; Number of saves in the output
+   n_saves = long(nsteps / (inputs.save_res/inputs.timestep)) + 1
+   
+   print, "nsteps, n_saves"
+   print, nsteps, n_saves
 
    ;;;;;;
    ; These parameters do not currently affect model run

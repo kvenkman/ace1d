@@ -1,4 +1,4 @@
-; Parameters describing the model run are defined here
+; Model parameters are defined here
 
 ; Model constants
 model  = {  del_time : inputs.timestep      ,$ ; Time step, in seconds
@@ -25,7 +25,7 @@ pconst = {  boltz : 1.38066e-16,$       ; boltzmann constant  in ergs K^-1
             gravref: 980.      ,$       ; Reference value of gravity
             re    : 6371.e5    ,$       ; Earth radius in cm
             cgm   : 0.5        ,$       
-            eff   : 0.33       ,$       ; Solar EUV heating efficiency, from TIE-GCM
+            eff   : 0.33       ,$       ; [Roble, 1973]
             ev2erg: 1.602E-12  ,$		; eV to ergs
             amu   : 1.6605e-24 ,$
             q_e   : 1.602e-19  ,$       ; Electron charge

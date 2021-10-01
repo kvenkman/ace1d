@@ -11,10 +11,10 @@ PRO model_run, f107, outputs
    inputs = { $ 
       run_year : 1999 , $
       start_day: 80   , $
-      ndays    : 2.*15, $
+      ndays    : 30   , $ ; model run duration
       runlat   : 0    , $
-      timestep : 60.  , $
-      save_res : 2*24l, $
+      timestep : 60.  , $ ; model timestep in seconds
+      save_res : 3600 , $ ; in seconds
       f107d    : f107 , $
       f107a    : f107 , $
       mask     : mask   $

@@ -9,7 +9,7 @@ n_wave = 37. ; number of wavelength bins
 
 solspec = {$
             n_wave     : n_wave        				,$
-            zflux      : fltarr(n_wave,model.nlev)  ,$
+            zflux      : fltarr(n_wave, model.nlev) ,$
             current    : fltarr(n_wave)				,$ 
             reference  : fltarr(n_wave)				,$
             wave1      : fltarr(n_wave)				,$
@@ -20,9 +20,9 @@ solspec = {$
           }
 xsec = {$
             abs        : fltarr(9, n_wave)		,$
-            br_pi      : fltarr(3,n_wave) 		,$
+            br_pi      : fltarr(3, n_wave) 		,$
             sigin4s    : fltarr(n_wave)   		,$
-            pepiscale  : fltarr(3,n_wave) 		,$
+            pepiscale  : fltarr(3, n_wave) 		,$
             pepiscale_pedio2 : fltarr(n_wave)   ,$
             pepiscale_pedin2 : fltarr(n_wave)   ,$
             pepiscale_pedo2  : fltarr(n_wave)   ,$

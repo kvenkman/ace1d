@@ -105,7 +105,7 @@
 	w = model.dz*(pconst.gask*zmaj.tn)/(pconst.grav*zmaj.barm)
 	for i = 1, model.nlev-1 DO zminor.co2[i] = zminor.co2[i-1]*exp(-w[i-1]/co2_sch[i-1])
 
-	; Saving initial conditions in a separate structure for posteriority
+	; Saving initial conditions in a separate structure for posterity
 	initial = {no:zminor.no, n4s:zminor.n4s, tn:zmaj.tn, te:zion.te, $ 
 			   ti:zion.ti, o:zmaj.oden, o2:zmaj.o2den, n2:zmaj.n2den, $
 			   e:zion.e, o_p:zion.o_p, zz:zmaj.zz}

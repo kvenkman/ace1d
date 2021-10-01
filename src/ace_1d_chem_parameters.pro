@@ -1,9 +1,7 @@
-; Define yields and exothermicities of all reactions
-; This has been broken out from chemmatrix as these need to be defined 
-; only at the start of the model run
+; Define yields and exothermicities of all reactions utilized in the model
+; This code is run once, at model initialization
 
-; The channel yields and exothermicities for the reactions defined 
-; in ace_1d_updatechem.pro are defined here.
+; Channel yields are dimensionless; exothermicities are in eV
 
 ;  Ion Neutral Reactions
 ; -------------------------
@@ -364,7 +362,7 @@ ace_1d_yieldmatrix, spindex.n2, spindex.ae, spindex.n2d, yield2, yieldmatrix
 ace_1d_yieldmatrix, spindex.n2, spindex.ae, spindex.n2p, yield3, yieldmatrix
 
 
-; Photolysis
+; Photolysis of N2
 yield1 = 0.5 ; N(4S)
 yield2 = 0.275 ; N(2D)
 yield3 = 1. - yield1 - yield2 ; N(2P)

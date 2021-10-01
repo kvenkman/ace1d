@@ -1,5 +1,4 @@
-; Setting up the variables
-
+; Setting up variables needed for the model run
              
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;            
 ;;;;    General Purpose structures    ;;;;
@@ -204,8 +203,8 @@ cooltermse = { $
 heattermse = { $
             q_pe0_55   : fltarr(model.nlev), $
             q_pe55_105 : fltarr(model.nlev), $
-            q_quench : fltarr(model.nlev), $
-            q_total       : fltarr(model.nlev) $
+            q_quench   : fltarr(model.nlev), $
+            q_total    : fltarr(model.nlev)  $
             }
 
 cooltermsi = { $
@@ -215,7 +214,7 @@ cooltermsi = { $
 heattermsi = { $
             ei   : fltarr(model.nlev), $
             q_pe : fltarr(model.nlev), $
-            q_ee   : fltarr(model.nlev) $
+            q_ee : fltarr(model.nlev)  $
             }
 
 o_o2_terms = {$

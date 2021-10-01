@@ -2,16 +2,18 @@ PRO ace_1d_updatechem, zmaj, zion, zminor, model,  $
                        spindex, exomatrix, coeffmatrix, ratematrix, $
                        heatmatrix
                        
-; REACTION COEFFICIENTS procedure, taken from 1D NO model as of March, 2016
+; Reaction coefficients, adopted from 1D NO model as of March, 2016
 ; Scott, Karthik, and Justin Y
 
-; Conventions for adding reactions
+; Conventions for adding reactions to the model
 ; ------------------------------------------
 ; Each reaction block begins writing out the reaction
+; Check that the reaction isn't already included in the model
 ; Then, reference the source from which the rate coefficient is obtained
 ; Any other comments are added after this
 ; Define the rate coefficient in the variable "coeff"
-; Pass the reactant and product indices to ace_1d_updatecrh
+; Pass coeff along with the reactant and product indices to ace_1d_updatecrh
+
 coeffmatrix = fltarr(spindex.nsp,spindex.nsp,model.nlev)
 ratematrix = fltarr(spindex.nsp,spindex.nsp,model.nlev)
 heatmatrix = fltarr(spindex.nsp,spindex.nsp,model.nlev)
